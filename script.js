@@ -30,18 +30,6 @@ addGlobalEventListener("submit", ".weatherForm", async e => {
     }
 })
 
-// weatherForm.addEventListener("submit", e => {
-//     e.preventDefault();
-
-//     const city = cityInput.value;
-
-//     if (city) {
-        
-//     } else {
-//         displayError("Please Enter City")
-//     }
-// })
-
 
 
 async function getWeatherData(city) {
