@@ -4,6 +4,197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeatherApp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .weatherForm {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .weatherForm:hover {
+            transform: translateY(-5px);
+        }
+
+        .cityInput {
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            outline: none;
+            width: 300px;
+            transition: all 0.3s ease;
+        }
+
+        .cityInput:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .cityInput::placeholder {
+            color: #999;
+        }
+
+        button[type="submit"] {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(0);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            min-width: 400px;
+            backdrop-filter: blur(10px);
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cityDisplay {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tempDisplay {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #667eea;
+            margin: 1.5rem 0;
+        }
+
+        .humidityDisplay {
+            font-size: 1.2rem;
+            color: #666;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .humidityDisplay::before {
+            content: "💧";
+            font-size: 1.5rem;
+        }
+
+        .descDisplay {
+            font-size: 1.5rem;
+            color: #555;
+            margin: 1rem 0;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+        .weatherEmoji {
+            font-size: 6rem;
+            margin: 1.5rem 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .errorDisplay {
+            font-size: 1.3rem;
+            color: #e74c3c;
+            padding: 2rem;
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 15px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        @media (max-width: 768px) {
+            .weatherForm {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .cityInput {
+                width: 100%;
+            }
+
+            .card {
+                min-width: auto;
+                width: 100%;
+                padding: 2rem;
+            }
+
+            .cityDisplay {
+                font-size: 2rem;
+            }
+
+            .tempDisplay {
+                font-size: 3rem;
+            }
+
+            .weatherEmoji {
+                font-size: 4rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -11,9 +202,9 @@
         <input type="text" class="cityInput" placeholder="Enter City">
         <button type="submit">Get Weather</button>
     </form>
-    
+
     <div class="card" style="display: none;">
-       
+
     </div>
 
     <script src="./script.js"></script>
