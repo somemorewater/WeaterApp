@@ -5,7 +5,7 @@ const CONFIG = {
   KELVIN_OFFSET: 273.15,
 };
 
-// Weather emoji mapping
+// Emoji mapping
 const WEATHER_EMOJIS = {
   thunderstorm: "⛈️",
   drizzle: "🌧️",
